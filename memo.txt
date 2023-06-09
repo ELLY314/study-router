@@ -1,0 +1,6 @@
+1. BootStrap 사용시 클래스명이 어떤 역할을 하는지 알아야함.
+2. Router, Routes, Router
+3. Route path="uri" element={<컴포넌트 props = {state} />}
+4. Link, NavLink ( {isActive} => { return ~~~})
+5. /pages
+6. /components
