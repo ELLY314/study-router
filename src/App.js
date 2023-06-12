@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -5,8 +6,8 @@ import About from "./pages/About";
 import Members from "./pages/Members";
 import SongList from "./pages/SongList";
 import Header from "./components/Header";
-import { useState } from "react";
-import SongDetail from "./pages/SongDetail";
+import Player from "./pages/Player";
+import PlayerIndex from "./pages/PlayerIndex";
 
 function App() {
     // 화면의 내용을 리랜더링 하는 변수 : state
@@ -33,6 +34,7 @@ function App() {
         { id: 7, title: "Hip to my heart", musician: "Band Perry", youtube_link: "vpLCFnD9LFo" },
         { id: 8, title: "Rolling in the deep", musician: "Adele", youtube_link: "EvK8pDK6IQU" },
     ]);
+
     return (
         <>
             {/* Header 컴포넌트는 항상 출력됨 */}
@@ -42,17 +44,19 @@ function App() {
                     {/* <Route path="개발자가 설정한 URI(주소)를 작성"/> */}
                     {/* {<Route path="./" /> 첫페이지 주소 */}
                     {/* <Route element={보여줄 컴포넌트 엘리먼트}/> */}
-
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     {/* <Route path="" element = { <컴포넌트 속성명 = "값" /> } */}
                     <Route path="/about" element={<About title="인디밴드" />} />
-
                     <Route path="/members" element={<Members members={members} />} />
-                    <Route path="/songs" element={<SongList songs={songs} />} />
-                    {/* 웹브라우저 주소 : /songs/1 URL parameter */}
-                    {/*                           리턴 { id : 1} */}
-                    <Route path="/songs/:id" element={<SongDetail songs={songs}/>}/>
+                    {/* neste Route */}
+                    <Route path="/songs" element={<SongList songs={songs} />}>
+                        {/* 중첩된 라우트 index */}
+                        <Route index element={<PlayerIndex />} />
+                        {/* 웹브라우저 주소 : /songs/1  URL parameter */}
+                        {/*                             리턴 { id : 1} */}
+                        <Route path=":id" element={<Player />} />
+                    </Route>
                 </Routes>
             </div>
         </>

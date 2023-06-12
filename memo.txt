@@ -4,3 +4,18 @@
 4. Link, NavLink ( {isActive} => { return ~~~})
 5. /pages
 6. /components
+
+
+/////////////
+
+1번 URL로 정보 전달하기: parameter
+: http://localhost:3000/songs/1
+: useParams()
+
+2번 URL로 정보 전달하기 : queryString
+: http://localhost:3000/songs?page=1
+: useLocation() / useSearchParams()
+
+3번 URL 에 몰래 stat: 객체 담아서 전달하기
+: http://localhost:3000
+: useNavigator()   ("경로", {state:객체});
